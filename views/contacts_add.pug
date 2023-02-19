@@ -7,8 +7,27 @@ block content
   if msg 
     p(class='redtext')= msg
   form(method='POST', action='/contacts/add')
-    input(type='text', name='contactsText')
+    <label for="fname">First name:</label>
     | 
+    input(type='text', name='firstName')
+    <br>
+    <br>
+    <label for="lastname">Last name:</label>
+    | 
+    input(type='text', name='lastName')
+    <br>
+    <br>
+    <label for="email">Email:</label>
+    | 
+    input(type='email', name='emailText')
+    <br>
+    <br>
+    <label for="notes">Notes:</label>
+    | 
+    input(type='text', name='notesText')
+    | 
+    <br>
+    <br>
     button(type='submit') Create Contact 
     | 
     a(href='/contacts') Cancel 

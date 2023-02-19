@@ -19,10 +19,11 @@ router.get('/add', function(req, res, next) {
 /* POST create contacts. */
 router.post('/add', function(req, res, next) {
   //console.log(req.body);
-  if (req.body.contactsText.trim() === '')  {
+  if (req.body.firstName.trim() === '' || req.body.lastName.trim() === '')  {
       res.render('contacts_add', { title: 'Add a contact', msg: 'Contact text can NOT be empty!'});
   } else  {
-    res.send('contact created');
+    // add contact to database
+    res.redirect('/contacts');
   }
 });
 

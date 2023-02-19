@@ -11,4 +11,11 @@ router.get('/', function(req, res, next) {
   res.render('contacts', {title: 'Express Contacts', contacts: data });
 });
 
+/* GET create contacts form. */
+router.get('/add', function(req, res, next) {
+  res.render('contacts_add', {title: 'Add a contact' });
+});
+
+
+
 module.exports = router;

@@ -49,5 +49,10 @@ router.post('/:uuid/delete', function(req, res, next) {
   res.redirect('/contacts');
 });
 
+/* GET edit contacts form. */
+router.get('/:uuid/edit', function(req, res, next) {
+  const contact = contactsRepo.findById(req.params.uuid);
+  res.render('contacts_edit', {title: 'Edit contact', contact: contact });
+});
 
 module.exports = router;

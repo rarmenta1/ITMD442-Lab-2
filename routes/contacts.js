@@ -19,9 +19,9 @@ router.get('/add', function(req, res, next) {
 router.post('/add', function(req, res, next) {
   //console.log(req.body);
   if (req.body.firstName.trim() === '' || req.body.lastName.trim() === '')  {
-      res.render('contacts_add', { title: 'Add a contact', msg: 'Contact text can NOT be empty!'});
+      res.render('contacts_add', { title: 'Add a contact', msg: 'First Name and Last Name text fields can NOT be empty!'});
   } else  {
-    contactsRepo.create({firstName: req.body.firstName.trim(), lastName: req.body.lastName.trim(), email: req.body.email, notes: req.body.notes, date: req.body.date})
+    contactsRepo.create({firstName: req.body.firstName.trim(), lastName: req.body.lastName.trim(), email: req.body.email, notes: req.body.notes})
 
     res.redirect('/contacts');
   }
@@ -54,5 +54,19 @@ router.get('/:uuid/edit', function(req, res, next) {
   const contact = contactsRepo.findById(req.params.uuid);
   res.render('contacts_edit', {title: 'Edit contact', contact: contact });
 });
+
+/* POST edit contacts. */
+router.post('/:uuid/edit', function(req, res, next) {
+  //console.log(req.body);
+  if (req.body.firstName.trim() === '' || req.body.lastName.trim() === '')  {
+    const contact = contactsRepo.findById(req.params.uuid);
+    res.render('contacts_edit', { title: 'Edit contact', msg: 'First Name and Last Name text fields can NOT be empty!', contact: contact});
+  } else  {
+    const updatedContact = {id: req.params.uuid, firstName: req.body.firstName.trim(), lastName: req.body.lastName.trim(), email: req.body.email, notes: req.body.notes, notes: req.body.notes };
+    contactsRepo.update(updatedContact);
+    res.redirect('/contacts/' + req.params.uuid);
+  }
+});
+
 
 module.exports = router;

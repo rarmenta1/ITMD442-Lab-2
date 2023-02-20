@@ -6,6 +6,7 @@ db.set('7054c36e-d85e-41d3-8fd8-a996e0cac276', {firstName: 'Jodio', lastName: "J
 
 const repo = {
   findAll: () => Array.from(db.values()),
+  findById: (uuid) => db.get(uuid),
   create: (contacts) => {
     const newContacts = {
       id: crypto.randomUUID(),

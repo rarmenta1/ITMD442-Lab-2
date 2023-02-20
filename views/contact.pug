@@ -2,4 +2,22 @@ extends layout
 
 block content
   h1= title
-  p= contact.firstName + ' ' + contact.lastName
+  p Detailed Contact Information
+  a(href='/contacts') Return to contact list
+  hr
+  #contacts-wrapper 
+    <table style="width:100%">
+      <tr>
+        th First Name
+        th Last Name
+        th Email Address
+        th Notes
+        th Date Created/Modified
+      </tr>
+        tr.contacts-list 
+          th= contact.firstName 
+          th= contact.lastName
+          th= contact.email
+          th= contact.notes
+          th= contact.date
+    </table>

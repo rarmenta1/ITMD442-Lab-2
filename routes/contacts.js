@@ -21,7 +21,7 @@ router.post('/add', function(req, res, next) {
   if (req.body.firstName.trim() === '' || req.body.lastName.trim() === '')  {
       res.render('contacts_add', { title: 'Add a contact', msg: 'Contact text can NOT be empty!'});
   } else  {
-    contactsRepo.create({firstName: req.body.firstName.trim(), lastName: req.body.lastName.trim(), email: req.body.email})
+    contactsRepo.create({firstName: req.body.firstName.trim(), lastName: req.body.lastName.trim(), email: req.body.email, notes: req.body.notes, date: req.body.date})
 
     res.redirect('/contacts');
   }

@@ -21,7 +21,7 @@ block content
           th= contact.date
     </table>
     hr
-  form(method='POST', action='/contacts/' + id + '/delete')
+  form(method='POST', action='/contacts/' + contact.id + '/delete')
     button(type='submit') Confirm Delete
     | 
-    a(href='/contacts/' + id) Cancel 
+    a(href='/contacts/' + contact.id) Cancel 

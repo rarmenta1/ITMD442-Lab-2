@@ -17,6 +17,7 @@ const repo = {
     };
     db.set(newContacts.id, newContacts);
   },
+  deleteByID: (uuid) => db.delete(uuid),
 };
 
 module.exports = repo;

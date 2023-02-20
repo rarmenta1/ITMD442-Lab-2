@@ -1,13 +1,12 @@
 var express = require('express');
 var router = express.Router();
+const contactsRepo = require('../src/contactsMemoryRepository');
 
-let data = [
-  {text: 'This is contact 1 text', id: 'a593c7cf-889d-4e81-bf0a-76cfd2d9810d'},
-  {text: 'This is contact 2 text', id: '7054c36e-d85e-41d3-8fd8-a996e0cac276'}
-]
+
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
+  const data = contactsRepo.findAll();
   res.render('contacts', {title: 'Express Contacts', contacts: data });
 });
 
@@ -22,7 +21,8 @@ router.post('/add', function(req, res, next) {
   if (req.body.firstName.trim() === '' || req.body.lastName.trim() === '')  {
       res.render('contacts_add', { title: 'Add a contact', msg: 'Contact text can NOT be empty!'});
   } else  {
-    // add contact to database
+    contactsRepo.create({firstName: req.body.firstName.trim(), lastName: req.body.lastName.trim(), email: req.body.email})
+
     res.redirect('/contacts');
   }
 });

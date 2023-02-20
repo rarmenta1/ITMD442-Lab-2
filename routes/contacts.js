@@ -27,5 +27,10 @@ router.post('/add', function(req, res, next) {
   }
 });
 
+/* GET single contacts. */
+router.get('/:uuid', function(req, res, next) {
+  res.render('contact', {title: 'Single Contact' });
+});
+
 
 module.exports = router;

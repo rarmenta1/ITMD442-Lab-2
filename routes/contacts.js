@@ -37,5 +37,11 @@ router.get('/:uuid', function(req, res, next) {
   }
 });
 
+/* GET delete contacts form. */
+router.get('/:uuid/delete', function(req, res, next) {
+  const contact = contactsRepo.findById(req.params.uuid);
+  res.render('contacts_delete', {title: 'Delete Contact', contact: contact });
+});
+
 
 module.exports = router;
